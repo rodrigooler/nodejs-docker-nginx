@@ -1,1 +1,1 @@
-export default () => "Hello World"
+module.exports = () => "Hello World"

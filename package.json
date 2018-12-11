@@ -1,0 +1,13 @@
+{
+  "name": "nodejs-docker-nginx",
+  "version": "0.1.0",
+  "author": "Rodrigo Oler <https://github.com/rodrigooler>",
+  "dependencies": {
+    "micro": "9.3.3"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "start": "micro"
+  }
+}

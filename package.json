@@ -8,7 +8,9 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "docker:build": "docker build -t nodejs-docker-nginx .",
+    "docker:app:build": "docker build -t nodejs-docker-nginx .",
+    "docker:nginx:build": "docker build -t load-balance-nginx ./docker/nginx",
+    "docker:nginx:run": "docker run -p 8080:80 -d load-balance-nginx",
     "start": "micro"
   }
 }

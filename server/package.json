@@ -8,6 +8,6 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "start": "micro"
+    "start": "micro -l tcp://0.0.0.0:${PORT-8080}"
   }
-} 
+}

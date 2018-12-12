@@ -8,7 +8,7 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "docker:build": "docker build -t app ./docker",
+    "docker:build": "docker build -t nodejs-docker-nginx .",
     "start": "micro"
   }
 }

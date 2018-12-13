@@ -1,10 +1,8 @@
 FROM nginx
 
-RUN rm /etc/nginx/conf.d/default.conf
-RUN rm /etc/nginx/sites-available/example.com.conf
-RUN rm /etc/nginx/nginxconfig.io/letsencrypt.conf
-RUN rm /etc/nginx/nginxconfig.io/general.conf
-RUN rm /etc/nginx/nginxconfig.io/proxy.conf
+RUN mkdir /etc/nginx/sites-available
+RUN mkdir /etc/nginx/nginxconfig.io
+RUN mkdir /etc/nginx/sites-enabled
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY example.com.conf /etc/nginx/sites-available/example.com.conf
@@ -16,7 +14,7 @@ COPY proxy.conf /etc/nginx/nginxconfig.io/proxy.conf
 RUN ln -s /etc/nginx/sites-available/example.com.conf /etc/nginx/sites-enabled/example.com.conf
 
 # HTTPS - certbot (before first run): create ACME-challenge common directory
-RUN sudo -u www-data sh -c "mkdir -p /var/www/_letsencrypt"
+RUN www-data sh -c "mkdir -p /var/www/_letsencrypt"
 
 # HTTPS - certbot (before first run): disable SSL directives
 RUN -i -r 's/(listen .*443)/\1;#/g; s/(ssl_(certificate|certificate_key|trusted_certificate) )/#;#\1/g' /etc/nginx/sites-available/example.com.conf
